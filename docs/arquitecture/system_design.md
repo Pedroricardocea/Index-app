@@ -1,51 +1,55 @@
 # System Architecture: Index (Unified Experience)
 
 ## 1. High-Level Overview
-**Index** offers complete feature parity across Web and Mobile. Both platforms serve as:
-1.  **The Capture Surface:** Voice-first ingestion, file uploads, and "Daily Dumps."
-2.  **The Analysis Surface:** Deep-dive dashboards, "Velocity" tracking, and reporting.
+**Index** is a self-evolving Career Velocity ecosystem.
+- **Surface:** Unified Web + Mobile apps (Feature Parity).
+- **Core:** Agentic Backend for ROI calculation.
+- **Evolution:** Autonomous agents (Scout & Scribe) that research new features and maintain documentation.
 
-## 2. Tech Stack (Unified)
+## 2. The Agentic Workforce
 
-### Web (Next.js 14+)
-* **Ingestion:** Browser `MediaRecorder API` for voice capture.
-* **Visuals:** Shadcn/UI + Aceternity UI + Magic UI.
-* **Charts:** Recharts or Tremor (Wrapped in Aceternity containers).
+### A. The "Analyst" (Real-time Logic)
+* **Role:** Processes Daily Dumps, calculates ROI/Velocity.
+* **Trigger:** New Audio Upload.
 
-### Mobile (Expo / React Native)
-* **Ingestion:** `expo-av` for high-fidelity voice capture.
-* **Visuals:** NativeWind (Tailwind) + Reanimated + Skia.
-* **Charts:** **Victory Native XL** or **React Native Skia**. (These are the *only* mobile libraries that can match the "Opal" aesthetic).
+### B. "Jules" (Quality Assurance)
+* **Role:** Simulates user behavior to validate math/logic.
+* **Trigger:** Pull Request.
 
-### Backend (Shared Brain)
-* **Agent Core:** Processes audio from *any* source (Web/Mobile) identically.
-* **Database:** Supabase (PostgreSQL + pgvector).
+### C. "Scout" (Product Strategy - NEW)
+* **Role:** The Researcher.
+* **Trigger:** Weekly Schedule.
+* **Capabilities:**
+    * **Web Search (Google):** Searches for "New Engineering Productivity Metrics 2026," "DORA metric alternatives," or "AI coding impact studies."
+    * **Synthesis:** Compares found metrics against our current `packages/logic`.
+    * **Output:** Updates `docs/strategy/feature_radar.md` with proposals (e.g., "Adopting SPACE Framework metrics").
+
+### D. "Scribe" (Governance - NEW)
+* **Role:** The Librarian.
+* **Trigger:** Code Merge to Main.
+* **Capabilities:**
+    * **Drift Detection:** Scans `/src` changes vs `/docs` definitions.
+    * **Auto-Update:** If a developer changes the Database Schema but forgets to update `system_design.md`, Scribe opens a PR to fix the docs.
+    * **Public Face:** Compiles `docs/public/README_TEMPLATE.md` + Latest Stats -> Generates the root `README.md` for GitHub.
 
 ---
 
-## 3. Core Architecture Flows
+## 3. Tech Stack (Unified)
 
-### A. The "Universal" Capture Pipeline
-Whether on iPhone or Chrome:
-1.  **Record:** Audio is captured (AAC/WebM).
-2.  **Upload:** Sent to Supabase Storage (`/raw-dumps/{user_id}`).
-3.  **Process:** Backend Agent transcribes + calculates ROI.
-4.  **Notify:** Real-time update via WebSocket (Supabase Realtime) to *all* user devices.
+### Web (Next.js 14+)
+* **Visuals:** Shadcn/UI + Aceternity UI + Magic UI.
+* **Charts:** Recharts/Tremor.
 
-### B. The "Universal" Analysis Engine
-1.  **Fetch:** `packages/logic` requests the "Velocity Data" (e.g., last 30 days).
-2.  **Transform:** Data is formatted for visualization.
-3.  **Render:**
-    * **Web:** Renders `<AreaChart />` (Recharts) with SVG gradients.
-    * **Mobile:** Renders `<CartesianChart />` (Victory Native) with Skia Shaders.
-    * *Result:* The charts look visually identical (same colors, same curves).
+### Mobile (Expo)
+* **Visuals:** NativeWind + Reanimated + Skia.
+* **Charts:** Victory Native XL (Skia-based).
 
-### C. The Validation Pipeline (CI/CD)
-1.  **Commit:** Developer pushes code to `feature/new-chart`.
-2.  **Simulation:** GitHub Actions triggers **Jules**.
-    * Jules builds the app.
-    * Jules runs `tests/simulation-data/scenario_A.json`.
-3.  **Validation:**
-    * If the "Velocity Score" calculation drifts by >1% from the expected baseline, the PR is **blocked**.
-    * *Why:* Prevents "Math Regression" where a code change accidentally ruins the user's historical data.
-4.  **Preview:** A Vercel/Expo preview link is generated for manual review.
+### Backend & Data
+* **Database:** Supabase (PostgreSQL + pgvector).
+* **Agent Tools (MCP):**
+    * `mcp-google-search`: For Scout's research.
+    * `mcp-fs-watcher`: For Scribe's drift detection.
+
+## 4. Security & Privacy
+* **Data Isolation:** RLS enabled.
+* **Encryption:** In-transit & At-rest (PostgreSQL TDE).
