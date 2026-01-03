@@ -144,3 +144,44 @@ This document defines the **Model Context Protocol (MCP)** interfaces for the In
 * **Description:** Returns the current server time (UTC). Critical for time-series calculations.
 * **Function Name:** `get_current_time`
 * **Schema:** `{} ` (No parameters)
+
+---
+## 5. Engineering Tools (Used by: FORGE, NEXUS)
+
+### `mcp-npm-search` (via Context7)
+* **Description:** Finds the correct install command for libraries to avoid "package not found" errors.
+* **Agent:** Forge
+
+### `mcp-mobile-preview` (New)
+* **Description:** Triggers a local Expo build to verify that code compiles.
+* **Function:** `check_mobile_compilation`
+* **Schema:** `{}` (Runs `npx expo type-check`)
+
+---
+## 6. Security Tools (Used by: SENTINEL)
+
+### `mcp-security-audit`
+* **Description:** Scans the codebase for hardcoded secrets and open RLS policies.
+* **Function:** `audit_codebase`
+* **Schema:**
+    ```json
+    {
+      "name": "audit_codebase",
+      "description": "Scan for security vulnerabilities.",
+      "parameters": {
+        "scan_type": {
+          "type": "string",
+          "enum": ["secrets", "rls_policies", "dependency_vulns"]
+        }
+      }
+    }
+    ```
+
+---
+
+## 7. Version Control (Used by: SCRIBE, FORGE)
+
+### `mcp-github`
+* **Description:** Allows agents to interact with the repo (PRs, Issues).
+* **Function:** `create_pull_request`
+* **Schema:** Standard GitHub MCP Schema.

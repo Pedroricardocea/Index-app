@@ -8,29 +8,31 @@
 
 ## 2. The Agentic Workforce
 
-### A. The "Analyst" (Real-time Logic)
-* **Role:** Processes Daily Dumps, calculates ROI/Velocity.
-* **Trigger:** New Audio Upload.
+### A. The Builders (Execution)
+* **"Forge" (Frontend Architect):**
+    * **Scope:** Web (Next.js) & Mobile (Expo).
+    * **Responsibility:** Implements pixel-perfect UI using **Aceternity** (Web) and **Skia** (Mobile).
+    * **Constraint:** Must verify API syntax via `context7` before writing components.
+* **"Nexus" (Backend Engineer):**
+    * **Scope:** Supabase & Edge Functions.
+    * **Responsibility:** Writes SQL migrations and "Velocity" calculation logic.
 
-### B. "Jules" (Quality Assurance)
-* **Role:** Simulates user behavior to validate math/logic.
-* **Trigger:** Pull Request.
+### B. The Guardians (Quality & Security)
+* **"Sentinel" (SecOps):**
+    * **Scope:** RLS Policies & Secrets.
+    * **Trigger:** Any DB schema change.
+    * **Action:** Audits for data leaks (e.g., "Can User A see User B's data?").
+* **"Jules" (QA Simulator):**
+    * **Role:** Simulates synthetic user behavior to validate ROI math on every PR.
 
-### C. "Scout" (Product Strategy - NEW)
-* **Role:** The Researcher.
-* **Trigger:** Weekly Schedule.
-* **Capabilities:**
-    * **Web Search (Google):** Searches for "New Engineering Productivity Metrics 2026," "DORA metric alternatives," or "AI coding impact studies."
-    * **Synthesis:** Compares found metrics against our current `packages/logic`.
-    * **Output:** Updates `docs/strategy/feature_radar.md` with proposals (e.g., "Adopting SPACE Framework metrics").
-
-### D. "Scribe" (Governance - NEW)
-* **Role:** The Librarian.
-* **Trigger:** Code Merge to Main.
-* **Capabilities:**
-    * **Drift Detection:** Scans `/src` changes vs `/docs` definitions.
-    * **Auto-Update:** If a developer changes the Database Schema but forgets to update `system_design.md`, Scribe opens a PR to fix the docs.
-    * **Public Face:** Compiles `docs/public/README_TEMPLATE.md` + Latest Stats -> Generates the root `README.md` for GitHub.
+### C. The Thinkers (Strategy)
+* **"Analyst" (Logic Core):**
+    * **Model:** **Gemini 1.5 Pro**.
+    * **Role:** Processes voice notes and calculates career velocity.
+* **"Scout" (Researcher):**
+    * **Role:** Searches Google for new productivity metrics (DORA, SPACE).
+* **"Scribe" (Librarian):**
+    * **Role:** Ensures `docs/` match `src/`. Opens PRs to fix documentation drift.
 
 ---
 

@@ -15,8 +15,14 @@ A "Daily Check-in" app where the user speaks (can also upload data, files, etc.)
 5.  **Secures** the data and stores it in a database so that even the most confidential data is completely safe with world class security.
 
 ## Key Features
-- **Voice-First Input:** Zero friction entry.
-- **The "Analyst" Agent:** Compares today vs. history.
-- **Visual Dashboard:** Tracks "Leverage Ratio" (Maintenance vs. Growth).
-- **In-depth Reports:** Generate reports for when individual evaluations are needed.
-- **AI-Driven Insights:** Use AI to generate insights and recommendations.
+## Key Features
+- **True Cross-Platform Parity:**
+    - **Mobile (iOS/Android):** Built with **Expo & Skia**. Offline-first capture, haptic coaching, and OLED-optimized visuals.
+    - **Web (Desktop):** Built with **Next.js & Aceternity UI**. Deep-dive analytics, Bento-grid reports, and management dashboards.
+- **The "Velocity" Engine:**
+    - **Voice-to-Value:** Speak naturally. The **Analyst Agent** (Gemini 1.5 Pro) extracts "Impact Events" and calculates your ROI in real-time.
+    - **MacroFactor Logic:** Compares today's work against your 30-day (or costume range you set up) baseline to detect acceleration or stagnation.
+- **Autonomous Governance:**
+    - **Sentinel:** An AI security auditor that monitors RLS policies and secrets 24/7.
+    - **Scribe:** A documentation agent that ensures code never drifts from the design specs.
+- **Privacy First:** Data is isolated via Row-Level Security (RLS) and encrypted at rest.
