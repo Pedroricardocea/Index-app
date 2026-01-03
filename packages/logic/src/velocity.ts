@@ -9,7 +9,7 @@ import { DailyLog, ImpactEvent } from './types';
  * @param log The DailyLog entry (including sentiment).
  * @param events The ImpactEvents extracted from that log.
  */
-export const calculateVelocity = (log: DailyLog, events: ImpactEvent[]): number => {
+export const calculateVelocity = (log: DailyLog, events: ImpactEvent[] = []): number => {
   // 1. Sentiment Component (-1.0 to 1.0) -> Scaled to -20 to +20
   const sentimentComponent = log.sentiment_score * 20;
 
