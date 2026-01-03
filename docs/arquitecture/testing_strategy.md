@@ -1,28 +1,20 @@
-# Testing Strategy: The "Jules" Simulation Protocol
+# Testing Strategy: The Auto-Remediation Protocol
 
 ## 1. Core Philosophy
-We do not just check if the code *compiles*. We check if the **Career Velocity Logic** holds up under real-world usage.
-We use **Synthetic Simulation** to prove value.
+We do not just "fail" builds. We **fix** them.
+The CI pipeline detects issues, and **Jules (Google's Autonomous Agent)** attempts to resolve them before notifying a human.
 
-## 2. The "Jules" Agent (CI/CD)
-**Jules** is our Automated QA Agent running in GitHub Actions.
-* **Trigger:** Every Pull Request.
-* **Role:** Jules spins up a temporary environment and acts as a "Ghost User."
+## 2. The Loop (CI -> Jules -> PR)
 
-## 3. The Simulation Loop
-Instead of static unit tests, Jules runs a **"Simulated Work Week"**:
+### Step 1: Detection (GitHub Actions)
+* **Trigger:** PR Opened.
+* **Runner:** Playwright (Web) & Maestro (Mobile) run the "Critical User Journey" simulation.
+* **Event:** Test Fails (e.g., "Velocity Score not calculating").
 
-1.  **Day 1 (Baseline):**
-    * *Action:* Jules injects a synthetic voice note: *"I manually fixed the SQL query."*
-    * *Expectation:* System detects "Maintenance Work." Velocity = Low.
-2.  **Day 3 (Improvement):**
-    * *Action:* Jules injects: *"I wrote a script to automate that SQL fix."*
-    * *Expectation:* System detects "Automation Win." Velocity = Spikes ⬆️.
-3.  **Day 7 (Reporting):**
-    * *Action:* Jules checks the Dashboard.
-    * *Assertion:* Verify that "Leverage Ratio" moved from 0% to 50%.
-
-## 4. Technology Stack
-* **Web E2E:** **Playwright**. It renders the Aceternity charts and verifies pixels.
-* **Mobile E2E:** **Maestro**. It taps buttons on a virtual iPhone to test haptics and flows.
-* **Logic Simulation:** **Vitest**. Runs the `/packages/logic` math against 1,000 generated scenarios to ensure no "Velocity Inflation."
+### Step 2: The Handoff (The "Jules" Hook)
+Instead of just sending an email, the CI pipeline executes:
+```bash
+jules remote new \
+  --repo index-app \
+  --session "Fix the Velocity Calculation bug found in CI Run #${GITHUB_RUN_ID}" \
+  --context "Test 'calc_velocity' failed. Expected 150, got null. Logs attached."

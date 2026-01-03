@@ -17,7 +17,7 @@ The application requires the following keys to function.
 ### AI & Agents
 | Variable | Description | Location |
 | :--- | :--- | :--- |
-| `OPENAI_API_KEY` | GPT-4o Access | `.env` (Server Only) |
+| `GEMINI_API_KEY` | Gemini 1.5 Pro | `.env` (Server Only) |
 | `DEEPGRAM_API_KEY` | Voice Transcription | `.env` (Server Only) |
 | `SERPAPI_KEY` | Google Search (Scout) | `.env` (Server Only) |
 
@@ -32,6 +32,8 @@ The application requires the following keys to function.
 | :--- | :--- | :--- |
 | `EXPO_TOKEN` | Publishing Mobile App | GitHub Secrets |
 | `VERCEL_TOKEN` | Deploying Web App | GitHub Secrets |
+| `VERCEL_ORG_ID` | Vercel Organization | GitHub Secrets |
+| `VERCEL_PROJECT_ID` | Vercel Project | GitHub Secrets |
 
 ---
 

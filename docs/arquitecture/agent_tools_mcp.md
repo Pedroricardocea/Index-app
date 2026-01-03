@@ -185,3 +185,24 @@ This document defines the **Model Context Protocol (MCP)** interfaces for the In
 * **Description:** Allows agents to interact with the repo (PRs, Issues).
 * **Function:** `create_pull_request`
 * **Schema:** Standard GitHub MCP Schema.
+
+### `mcp-jules`
+* **Description:** The interface to Google's Autonomous Coding Agent.
+* **Function:** `assign_coding_task`
+* **Schema:**
+    ```json
+    {
+      "name": "assign_coding_task",
+      "description": "Delegate a complex coding task to Jules.",
+      "parameters": {
+        "task_description": {
+          "type": "string",
+          "description": "Clear instructions (e.g. 'Refactor the BentoGrid component to use NativeWind')."
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["P0", "P1", "P2"]
+        }
+      },
+      "required": ["task_description"]
+    }

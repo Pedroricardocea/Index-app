@@ -20,10 +20,11 @@
 ### B. The Guardians (Quality & Security)
 * **"Sentinel" (SecOps):**
     * **Scope:** RLS Policies & Secrets.
-    * **Trigger:** Any DB schema change.
-    * **Action:** Audits for data leaks (e.g., "Can User A see User B's data?").
-* **"Jules" (QA Simulator):**
-    * **Role:** Simulates synthetic user behavior to validate ROI math on every PR.
+* **"Jules" (The Engineer):**
+    * **Type:** **Autonomous Google Agent**.
+    * **Role:** 24/7 Maintenance Engineer.
+    * **Capabilities:** Can read code, run terminals, and submit PRs autonomously.
+    * **Trigger:** CI Failures or "Scout" Strategy Reports.
 
 ### C. The Thinkers (Strategy)
 * **"Analyst" (Logic Core):**
@@ -41,6 +42,7 @@
 ### Web (Next.js 14+)
 * **Visuals:** Shadcn/UI + Aceternity UI + Magic UI.
 * **Charts:** Recharts/Tremor.
+* **Hosting:** Vercel (Production) - Selected for zero-config Next.js support.
 
 ### Mobile (Expo)
 * **Visuals:** NativeWind + Reanimated + Skia.

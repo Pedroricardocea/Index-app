@@ -1,0 +1,71 @@
+{
+  "project_name": "Index",
+  "system_constraints": [
+    "STRICT MODE: You are forbidden from using libraries not listed in docs/architecture/system_design.md.",
+    "MOBILE RULE: Never use HTML/CSS tags in /apps/mobile. Use <View> and NativeWind.",
+    "DOCS FIRST: You must read docs/design/design_system.md before generating UI code."
+  ],
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/pedrocastro/Desktop/Index-app"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}" }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "${SUPABASE_DB_CONNECTION_STRING}"]
+    },
+    "time": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-time"]
+    },
+    "jules-cli": {
+      "command": "npx",
+      "args": ["-y", "@google/jules"],
+      "env": { "JULES_API_KEY": "${JULES_API_KEY}" }
+    }
+  },
+  "agents": {
+    "forge": {
+      "role": "Frontend Architect (Web & Mobile)",
+      "mission": "Implement pixel-perfect UI with feature parity.",
+      "tools": ["filesystem", "context7", "github"],
+      "access": ["/apps/web", "/apps/mobile", "/packages/ui-shared"]
+    },
+    "nexus": {
+      "role": "Backend Engineer",
+      "mission": "Manage Supabase schema and API logic.",
+      "tools": ["filesystem", "postgres", "context7"],
+      "access": ["/supabase", "/packages/logic", "/packages/api"]
+    },
+    "sentinel": {
+      "role": "Security Engineer",
+      "mission": "Audit RLS policies and secrets.",
+      "tools": ["filesystem", "postgres", "github"],
+      "access": ["READ_ONLY"]
+    },
+    "scout": {
+      "role": "Product Strategist",
+      "mission": "Research metrics and assign implementation tasks to Jules.",
+      "tools": ["context7", "jules-cli"]
+    },
+    "scribe": {
+      "role": "Documentation Lead",
+      "mission": "Ensure docs match code and open PRs for drift.",
+      "tools": ["filesystem", "github", "context7"]
+    },
+    "jules": {
+      "role": "Autonomous Maintenance Engineer",
+      "mission": "Fix bugs and refactor code asynchronously.",
+      "tools": ["jules-cli", "filesystem", "github", "postgres"]
+    }
+  }
+}
