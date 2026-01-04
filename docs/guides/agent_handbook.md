@@ -48,3 +48,5 @@ Use the **"Role-Goal-Context"** pattern.
 *   **Be Specific about Files:** "Edit `packages/logic/src/velocity.ts`" is better than "Fix the logic."
 *   **One Step at a Time:** Don't ask for a whole app in one prompt. Break it down.
 *   **Documentation:** If you change code, always tell **Scribe**: "@Scribe Update the docs to match."
+
+#
