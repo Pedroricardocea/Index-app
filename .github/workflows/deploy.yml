@@ -17,6 +17,7 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID }}
           vercel-args: '--prod --build-env NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }} --build-env NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}'
+          working-directory: ./apps/web
 
   deploy-mobile:
     name: "📱 Deploy Mobile (EAS)"
@@ -32,4 +33,5 @@ jobs:
         run: npm ci
 
       - name: Create Update (EAS)
+        working-directory: ./apps/mobile
         run: eas update --branch production --message "Commit ${{ github.sha }}"
