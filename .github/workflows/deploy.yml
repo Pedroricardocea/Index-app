@@ -26,6 +26,7 @@ jobs:
       - uses: expo/expo-github-action@v8
         with:
           token: ${{ secrets.EXPO_TOKEN }}
+          eas-version: latest
       
       - name: Install Dependencies
         run: npm ci
